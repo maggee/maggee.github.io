@@ -1,0 +1,68 @@
+body {
+  background: #f8f8f8;
+}
+
+.shadow {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#about
+{
+    margin-bottom: -150px;
+}
+#about .profile-info .profile-preword span
+{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.1;
+
+    position: relative;
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    text-transform: uppercase;
+
+    color: #fff;
+    background-color: #07cb79;
+}
+#about .profile-info .profile-preword span:before
+{
+    position: absolute;
+    top: 100%;
+    left: 5px;
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    content: '';
+
+    border-width: 0 0 8px 8px;
+    border-style: solid;
+    border-color: transparent;
+    border-left-color: #07cb79;
+}
+#about .profile-info .profile-title
+{
+    font-weight: 700;
+}
+#about .profile-info .profile-title span
+{
+    font-weight: 300;
+}
+#about .profile-info .profile-label
+{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+#about .list-group .list-group-item strong
+{
+    float: left;
+
+    width: 90px;
+}
