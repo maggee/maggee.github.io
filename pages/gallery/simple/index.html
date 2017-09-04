@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Simple gallery : maggee.github.io</title>
+  <style media="screen">
+    body {
+      margin: 0;
+    }
+
+    .container {
+      position: relative;
+      margin: auto;
+      text-align: center;
+      float: left;
+    }
+
+    .container.gallery {
+      background: #012;
+    }
+
+    .gallery img {
+      position: relative;
+      display: block;
+      margin: auto;
+      max-width: 100%;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .row {
+      position: relative;
+      float: left;
+    }
+
+    .column {
+      position: relative;
+      width: 100%;
+      float: left;
+      min-height: 1px;
+    }
+
+    .col-1 {
+      width: calc((100%/12)*1);
+    }
+
+    .col-2 {
+      width: calc((100%/12)*2);
+    }
+
+    .col-3 {
+      width: calc((100%/12)*3);
+    }
+
+    .col-4 {
+      width: calc((100%/12)*4);
+    }
+
+    .col-5 {
+      width: calc((100%/12)*5);
+    }
+
+    .col-6 {
+      width: calc((100%/12)*6);
+    }
+
+    .col-7 {
+      width: calc((100%/12)*7);
+    }
+
+    .col-8 {
+      width: calc((100%/12)*8);
+    }
+
+    .col-9 {
+      width: calc((100%/12)*9);
+    }
+
+    .col-10 {
+      width: calc((100%/12)*10);
+    }
+
+    .col-11 {
+      width: calc((100%/12)*11);
+    }
+
+    .col-12 {
+      width: calc((100%/12)*12);
+    }
+    /*loading message css*/
+
+    #overlay {
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      color: white;
+      background: rgba(0, 0, 0, 1);
+      transition: 0.5s 0.4s;
+    }
+
+    #progress {
+      height: 1px;
+      background: #f17e43;
+      position: absolute;
+      width: 0;
+      top: 50%;
+      transition: 1s;
+    }
+
+    #progstat {
+      font-size: 1.4em;
+      letter-spacing: 3px;
+      position: absolute;
+      top: 50%;
+      margin-top: -40px;
+      width: 100%;
+      text-align: center;
+      color: #f17e43;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="overlay">
+    <div id="progstat"></div>
+    <div id="progress"></div>
+  </div>
+  <script>
+    ;
+    (function() {
+      function id(v) {
+        return document.getElementById(v);
+      }
+
+      function loadbar() {
+        var ovrl = id("overlay"),
+          prog = id("progress"),
+          stat = id("progstat"),
+          img = document.images,
+          c = 0,
+          tot = img.length;
+        if (tot == 0) return doneLoading();
+        var loadTexts = ["I feel like im supposed to be loading something. . .",
+          "What do you call 8 Hobbits? A Hobbyte.",
+          "Should have used a compiler language...",
+          "Is this Windows?",
+          "Adjusting flux capacitor...",
+          "Please wait until the sloth starts moving.",
+          "Don't break your screen yet!",
+          "I swear it's almost done.",
+          "Let's take a mindfulness minute..."
+        ];
+        var loadText = loadTexts[Math.floor(Math.random() * loadTexts.length)];
+        stat.innerHTML = loadText;
+
+        function imgLoaded() {
+          c += 1;
+          var perc = ((100 / tot * c) << 0);
+          prog.style.width = perc + "%";
+          ovrl.style.opacity = (1 - perc / 100);
+          if (c === tot) return doneLoading();
+        }
+
+        function doneLoading() {
+          ovrl.style.opacity = 0;
+          setTimeout(function() {
+            ovrl.style.display = "none";
+          }, 1200);
+        }
+        for (var i = 0; i < tot; i++) {
+          var tImg = new Image();
+          tImg.onload = imgLoaded;
+          tImg.onerror = imgLoaded;
+          tImg.src = img[i].src;
+        }
+      }
+      document.addEventListener('DOMContentLoaded', loadbar, false);
+    }())
+  </script>
+
+  <div class="container gallery">
+
+    <div class="column col-12">
+      <img src="http://via.placeholder.com/1400x80/000/fdf11?text=simple+gallery+with+small+css" alt="">
+    </div>
+    <!-- simple col-n and img width rule -->
+    <!-- keep class image width n+1 * 100 where n is column suffix -->
+    <!-- like 400px for col-3 and 500px for col-4 -->
+    <div class="row">
+
+      <div class="column col-6">
+        <img class="gallery-img" src="https://unsplash.it/700/300/?image=1068" alt="">
+      </div>
+
+      <div class="column col-6">
+        <img class="gallery-img" src="https://unsplash.it/700/300/?random&gravity=east" alt="">
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="column col-4">
+        <img class="gallery-img" src="https://unsplash.it/500/400/?random" alt="">
+      </div>
+
+      <div class="column col-3">
+        <img class="gallery-img" src="https://unsplash.it/400/210/?random" alt="">
+      </div>
+      <div class="column col-5">
+        <img class="gallery-img" src="https://unsplash.it/600/190/?random" alt="">
+      </div>
+
+      <div class="column col-4">
+        <img class="gallery-img" src="https://unsplash.it/g/500/200/?random" alt="">
+      </div>
+
+      <div class="column col-4">
+        <img class="gallery-img" src="https://unsplash.it/500/200/?random" alt="">
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="column col-3">
+        <img class="gallery-img" src="https://unsplash.it/400/210/?random" alt="">
+        <img class="gallery-img" src="https://unsplash.it/400/210/?random&blur" alt="">
+      </div>
+
+      <div class="column col-6">
+        <img class="gallery-img" src="https://unsplash.it/700/365/?random" alt="">
+      </div>
+
+      <div class="column col-3">
+        <img class="gallery-img" src="https://unsplash.it/400/415/?random" alt="">
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="column col-12">
+        <img class="gallery-img" src="https://unsplash.it/1600/400/?random" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
